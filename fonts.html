@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#eef3e9">
+  <title>字体对比 · Zirui Zhou</title>
+  <link rel="icon" type="image/jpeg" href="icon.jpg">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="font-faces.css">
+  <link rel="stylesheet" href="font-preview.css">
+  <script src="font-preview.js" defer></script>
+</head>
+<body class="font-studio">
+  <a class="skip-link" href="#preview-panel">跳到排版预览</a>
+  <header class="site-header">
+    <a class="wordmark" href="index.html"><img class="brand-icon" src="icon.jpg" alt="" width="32" height="32"><span>Zirui Zhou</span></a>
+    <nav aria-label="导航"><a href="#font-library">字体列表</a><a href="index.html">返回主页 ↗</a></nav>
+  </header>
+
+  <main class="studio-main">
+    <div class="studio-intro">
+      <h1>选一种，喜欢的字。</h1>
+      <p>先选标题或正文，再点字体卡片。用同一段文字比较字形，也可以在右侧试一套完整搭配。</p>
+      <p class="intro-note">这里只做预览，不会改变主页。英文样张用于比较这些拉丁字体；中文保留系统字体。</p>
+    </div>
+
+    <div class="studio-layout">
+      <section class="font-browser" id="font-library" aria-labelledby="library-heading">
+        <div class="browser-topline">
+          <h2 id="library-heading">字体库 <span id="font-count">18</span></h2>
+          <fieldset class="target-switch"><legend class="sr-only">卡片应用到哪里</legend><label><input type="radio" name="target" value="heading" checked><span>选标题</span></label><label><input type="radio" name="target" value="body"><span>选正文</span></label></fieldset>
+        </div>
+        <div class="font-filters" role="group" aria-label="字体类别">
+          <button type="button" data-filter="all" aria-pressed="true">全部</button>
+          <button type="button" data-filter="serif" aria-pressed="false">典雅衬线</button>
+          <button type="button" data-filter="script" aria-pressed="false">花体 / 手写</button>
+          <button type="button" data-filter="sans" aria-pressed="false">圆润简洁</button>
+          <button type="button" data-filter="reference" aria-pressed="false">参考网站</button>
+        </div>
+        <label class="specimen-input">卡片上的试写文字<input id="sample-text" type="text" value="Zirui Zhou" maxlength="100" placeholder="输入姓名、短句或喜欢的单词"></label>
+        <div class="font-grid" id="font-grid"></div>
+        <noscript><p>请启用 JavaScript 查看字体卡片与实时排版。</p></noscript>
+        <details class="font-notes">
+          <summary>参考网站的字体，以及还能用哪些字体</summary>
+          <p><a href="https://hishujie.github.io/" target="_blank" rel="noopener">Shujie 的主页</a>声明 <code>Domine, Georgia, serif</code>。本次浏览器检查实际渲染的是 Georgia，因此两种都放进了字体库。</p>
+          <p><a href="https://microsoft.github.io/TRELLIS.2/" target="_blank" rel="noopener">TRELLIS.2</a>主要使用 Avenir Next Cyr；这里从它的原站加载，标为「在线参考」。</p>
+          <p>你说的「plenotype」暂按 Palatino Linotype 收入。系统字体仅在已安装的设备上显示原字形；未安装或加载失败时，会明确标出替代字体。</p>
+          <p>可用字体没有固定数量：系统已安装字体、可用于网页的开放字体，以及你提供的 WOFF2 / WOFF / TTF / OTF 文件都可以接入。花体适合姓名和短标题，长正文可以配一款更易读的字体。</p>
+        </details>
+      </section>
+
+      <aside class="preview-panel" id="preview-panel" aria-labelledby="preview-heading">
+        <div class="preview-panel-heading"><h2 id="preview-heading">放进主页看看</h2><button type="button" id="reset">重置</button></div>
+        <div class="font-selectors">
+          <label>标题字体<select id="heading-font"></select></label>
+          <label>正文字体<select id="body-font"></select></label>
+        </div>
+        <div class="type-controls">
+          <label>标题 <output id="heading-size-value">48</output> px<input type="range" id="heading-size" min="32" max="68" value="48"></label>
+          <label>正文 <output id="body-size-value">16</output> px<input type="range" id="body-size" min="13" max="22" value="16"></label>
+        </div>
+        <label class="italic-control"><input type="checkbox" id="heading-italic">标题使用斜体 <span>（花体保留原字形）</span></label>
+
+        <div class="preview-sheet" id="preview-sheet">
+          <div class="preview-name" id="preview-name">Zirui Zhou</div>
+          <p class="preview-copy" id="preview-copy">I'm a fourth-year undergraduate in the Department of Automation at Tsinghua University. I explore 3D scene reconstruction, robot learning, and art.</p>
+          <h3 class="preview-section-title">Publications</h3>
+          <p class="preview-paper">3D Scene Change Modeling with Consistent Multi-View Aggregation</p>
+          <p class="preview-authors"><strong>Zirui Zhou</strong>, Junfeng Ni, Shujie Zhang, Yixin Chen, Siyuan Huang</p>
+          <p class="preview-art">Painting, piano &amp; clay sculpting.</p>
+          <p class="preview-alphabet">Aa Bb Gg Qq Rr · 0123456789 &amp; @</p>
+        </div>
+        <p id="font-status" class="font-status" role="status"></p>
+
+        <details class="edit-sample">
+          <summary>更换预览文字</summary>
+          <label>姓名 / 标题<input id="preview-title-input" type="text" value="Zirui Zhou" maxlength="100"></label>
+          <label>正文<textarea id="preview-body-input" rows="4" maxlength="2000">I'm a fourth-year undergraduate in the Department of Automation at Tsinghua University. I explore 3D scene reconstruction, robot learning, and art.</textarea></label>
+        </details>
+
+        <div class="pairing-presets" aria-label="字体搭配">
+          <span>试试这些搭配</span>
+          <div><button type="button" data-preset="classic">古典书卷</button><button type="button" data-preset="soft">温柔圆润</button><button type="button" data-preset="handwritten">一点手写</button><button type="button" data-preset="shujie">Shujie</button><button type="button" data-preset="trellis">TRELLIS.2</button></div>
+        </div>
+        <button type="button" class="copy-selection" id="copy-selection">复制我的字体选择 <span aria-hidden="true">↗</span></button>
+        <p class="copy-feedback" id="copy-feedback" role="status">挑好后，把字体名称或这段选择发给我。</p>
+        <textarea id="selection-text" class="selection-text" rows="3" readonly aria-label="字体选择结果" hidden></textarea>
+
+        <label class="upload-font">＋ 试用本地字体文件<input type="file" id="upload-font" accept=".woff2,.woff,.ttf,.otf"><span>只在当前浏览器预览，不上传。</span></label>
+        <p class="upload-status" id="upload-status" role="status"></p>
+      </aside>
+    </div>
+  </main>
+  <a class="mobile-preview-jump" href="#preview-panel">查看当前搭配 ↑</a>
+</body>
+</html>
