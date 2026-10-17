@@ -188,6 +188,7 @@ img { display: block; max-width: 100%; height: auto; }
 .research-interest h2 { color: var(--green); }
 .art-interest h2 { color: var(--pink); }
 .art-interest p { color: #816874; }
+.art-interest .favourite-music { margin-top: 6px; }
 .friend-links { padding-top: var(--profile-gap); margin-top: var(--profile-gap); border-top: 1px solid var(--line); }
 .friend-links h2 { color: #647463; }
 .friend-links a { color: #84642e; border-bottom: 1px solid #a9823c50; padding-bottom: 3px; }
@@ -304,6 +305,11 @@ body.contact-open { overflow: hidden; }
 @media (min-width: 720px) and (max-height: 600px) {
   .profile-interest p { font-size: 13px; line-height: 1.5; }
   .profile-links { font-size: 12px; gap: 5px 16px; }
+}
+@media (min-width: 720px) and (max-height: 560px) {
+  .academic-layout { --profile-gap: 5px; }
+  .profile-photo { width: clamp(72px, calc(32dvh - 104px), 88px); margin-bottom: 8px; }
+  .art-interest .favourite-music { margin-top: 4px; }
 }
 @media print {
   body { background: white; color: black; }
